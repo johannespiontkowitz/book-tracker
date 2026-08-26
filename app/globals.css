@@ -345,7 +345,7 @@ body {
     border: 3px solid var(--bt-border);
     border-radius: var(--bt-radius-sm);
     padding: 0.6rem 0.875rem;
-    font-size: 0.95rem;
+    font-size: 1rem; /* 16px prevents iOS auto-zoom */
     color: var(--bt-text-strong);
     font-family: inherit;
     transition: box-shadow 0.08s, border-color 0.08s;
@@ -446,6 +446,36 @@ body {
     gap: 0.75rem;
   }
 
+  /* Hero feature cards */
+  .bt-hero-features {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .bt-hero-feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--bt-paper);
+    border: 3px solid var(--bt-border);
+    box-shadow: 4px 4px 0 0 var(--bt-border);
+    padding: 1.25rem 1rem;
+    flex: 1;
+    min-width: 130px;
+    text-align: center;
+  }
+
+  .bt-hero-feature-label {
+    font-family: var(--font-pixel, monospace);
+    font-size: 0.55rem;
+    color: var(--bt-text-mid);
+    line-height: 2;
+  }
+
   /* ─── Pixel art bookshelf decoration ──────────────────────── */
   .bt-pixel-scene {
     width: 100%;
@@ -499,6 +529,85 @@ body {
     .bt-pixel-plank {
       border-color: #7dd3fc;
       box-shadow: 3px 3px 0 0 #7dd3fc;
+    }
+  }
+
+  /* Disable hover transforms on touch devices */
+  @media (hover: none) {
+    .bt-book-card:hover,
+    .bt-btn:hover {
+      transform: none;
+      box-shadow: var(--bt-shadow-card);
+    }
+    .bt-btn-ghost:hover {
+      box-shadow: none;
+    }
+  }
+
+  /* ─── Mobile responsive ──────────────────────────── */
+  @media (max-width: 600px) {
+    .bt-nav {
+      padding: 0.75rem 1rem;
+    }
+
+    .bt-nav-brand {
+      font-size: 0.45rem;
+    }
+
+    .bt-nav-user {
+      display: none;
+    }
+
+    .bt-nav-actions {
+      gap: 0.5rem;
+    }
+
+    .bt-page {
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .bt-page-header {
+      flex-wrap: wrap;
+    }
+
+    .bt-heading {
+      font-size: 0.75rem;
+    }
+
+    .bt-auth-card {
+      margin: 1.25rem;
+      padding: 1.5rem 1.25rem;
+    }
+
+    .bt-auth-title {
+      font-size: 0.6rem;
+    }
+
+    .bt-book-card {
+      padding: 0.875rem 1rem;
+    }
+
+    .bt-btn {
+      font-size: 0.5rem;
+      padding: 0.65rem 0.9rem;
+    }
+
+    .bt-empty-state {
+      padding: 2.5rem 1rem;
+      font-size: 0.6rem;
+    }
+
+    .bt-hero-feature-card {
+      flex: 1 1 100%;
+      min-width: unset;
+      flex-direction: row;
+      align-items: center;
+      text-align: left;
+      padding: 0.875rem 1rem;
+    }
+
+    .bt-pixel-scene {
+      margin-bottom: 1.75rem;
     }
   }
 }

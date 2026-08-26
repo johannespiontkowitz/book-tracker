@@ -39,15 +39,15 @@ export default function Home() {
           <Link href="/books/all" className="bt-btn bt-btn-secondary">Durch Bücher schmökern</Link>
         </div>
 
-        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", marginTop: "3rem", flexWrap: "wrap" }}>
+        <div className="bt-hero-features">
           {[
             { icon: "🏡", label: "Teile dein Bücherregal" },
             { icon: "🔍", label: "Finde was zu lesen" },
             { icon: "🤝", label: "Leihe es von deinen Freund:innen" },
           ].map(({ icon, label }) => (
-            <div key={label} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.6rem", background: "var(--bt-paper)", border: "3px solid var(--bt-border)", boxShadow: "4px 4px 0 0 var(--bt-border)", padding: "1.25rem 1rem", minWidth: "130px", flex: 1 }}>
-              <span style={{ fontSize: "2.25rem" }}>{icon}</span>
-              <span style={{ fontSize: "0.55rem", fontFamily: "var(--font-pixel, monospace)", color: "var(--bt-text-mid)", lineHeight: 2, textAlign: "center", whiteSpace: "pre-line" }}>{label}</span>
+            <div key={label} className="bt-hero-feature-card">
+              <span style={{ fontSize: "2.25rem", lineHeight: 1, flexShrink: 0 }}>{icon}</span>
+              <span className="bt-hero-feature-label">{label}</span>
             </div>
           ))}
         </div>

@@ -14,12 +14,12 @@ export default function Nav() {
           <>
             <Link href="/books/all" className="bt-nav-link">Bücher</Link>
             <span className="bt-nav-user">{session.user.name}</span>
-            <button onClick={() => signOut()} className="bt-btn bt-btn-ghost" style={{fontSize: "0.85rem", padding: "0.3rem 0.75rem"}}>Abmelden</button>
+            <button onClick={() => signOut()} className="bt-btn bt-btn-ghost">Abmelden</button>
           </>
         ) : (
           <>
             <Link href="/login" className="bt-nav-link">Login</Link>
-            <Link href="/signup" className="bt-btn bt-btn-primary" style={{fontSize: "0.85rem", padding: "0.4rem 1rem"}}>Registrieren</Link>
+            <Link href="/signup" className="bt-btn bt-btn-primary">Registrieren</Link>
           </>
         )}
       </div>
