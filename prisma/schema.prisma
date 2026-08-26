@@ -3,7 +3,6 @@
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
@@ -15,16 +14,48 @@ generator client {
 }
 
 model User {
-  id    String @id @default(cuid())
-  name  String
-  email String @unique
-  books Book[]
+  id              String   @id @default(cuid())
+  name            String
+  email           String   @unique
+  createdAt       DateTime @default(now())
+
+  booksOwned      Book[]   @relation("OwnedBooks")
+  loansAsBorrower Loan[]   @relation("BorrowerLoans")
 }
 
 model Book {
-  id      String @id @default(cuid())
-  title   String
-  author  String
-  ownerId String
-  owner   User   @relation(fields: [ownerId], references: [id])
+  id        String     @id @default(cuid())
+  title     String
+  author    String
+  status    BookStatus @default(AVAILABLE)
+  ownerId   String
+  owner     User       @relation("OwnedBooks", fields: [ownerId], references: [id])
+  loans     Loan[]
+  createdAt DateTime   @default(now())
+}
+
+model Loan {
+  id          String     @id @default(cuid())
+  bookId      String
+  book        Book       @relation(fields: [bookId], references: [id])
+  borrowerId  String
+  borrower    User       @relation("BorrowerLoans", fields: [borrowerId], references: [id])
+  status      LoanStatus @default(REQUESTED)
+  requestedAt DateTime   @default(now())
+  approvedAt  DateTime?
+  returnedAt  DateTime?
+  dueDate     DateTime?
+}
+
+enum BookStatus {
+  AVAILABLE
+  BORROWED
+}
+
+enum LoanStatus {
+  REQUESTED
+  ACTIVE
+  RETURNED
+  DECLINED
+  OVERDUE
 }
