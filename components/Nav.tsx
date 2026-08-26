@@ -10,8 +10,10 @@ export default function Nav() {
     <nav className="flex justify-between items-center p-4 border-b">
       <Link href="/" className="font-bold">book-tracker</Link>
       <div className="flex gap-4 items-center">
-        {isPending ? null : session ? (
+        {isPending ? null : session ? 
+        (
           <>
+            <Link href="/books/all">Books</Link>
             <span>{session.user.name}</span>
             <button onClick={() => signOut()}>Log out</button>
           </>
