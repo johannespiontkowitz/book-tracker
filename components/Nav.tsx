@@ -7,20 +7,19 @@ export default function Nav() {
   const { data: session, isPending } = useSession()
 
   return (
-    <nav className="flex justify-between items-center p-4 border-b">
-      <Link href="/" className="font-bold">book-tracker</Link>
-      <div className="flex gap-4 items-center">
-        {isPending ? null : session ? 
-        (
+    <nav className="bt-nav">
+      <Link href="/" className="bt-nav-brand">Stattbibliothek</Link>
+      <div className="bt-nav-actions">
+        {isPending ? null : session ? (
           <>
-            <Link href="/books/all">Books</Link>
-            <span>{session.user.name}</span>
-            <button onClick={() => signOut()}>Log out</button>
+            <Link href="/books/all" className="bt-nav-link">Bücher</Link>
+            <span className="bt-nav-user">{session.user.name}</span>
+            <button onClick={() => signOut()} className="bt-btn bt-btn-ghost" style={{fontSize: "0.85rem", padding: "0.3rem 0.75rem"}}>Abmelden</button>
           </>
         ) : (
           <>
-            <Link href="/login">Log in</Link>
-            <Link href="/signup">Sign up</Link>
+            <Link href="/login" className="bt-nav-link">Login</Link>
+            <Link href="/signup" className="bt-btn bt-btn-primary" style={{fontSize: "0.85rem", padding: "0.4rem 1rem"}}>Registrieren</Link>
           </>
         )}
       </div>

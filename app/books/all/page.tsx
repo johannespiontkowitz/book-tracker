@@ -12,41 +12,25 @@ export default async function HomePage() {
   })
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">All books</h1>
-        <Link
-          href="/books/new"
-          className="bg-black text-white rounded px-3 py-2"
-        >
-          Add book
-        </Link>
+    <div className="bt-page">
+      <div className="bt-page-header">
+        <h1 className="bt-heading">Alle Bücher</h1>
+        <Link href="/books/new" className="bt-btn bt-btn-primary">+ Buch anbieten</Link>
       </div>
 
       {books.length === 0 ? (
-        <p className="text-gray-500">No books yet. Add the first one!</p>
+        <div className="bt-empty-state">Bisher gibt es keine Bücher! Füge das erste hinzu!</div>
       ) : (
-        <ul className="flex flex-col gap-3">
+        <ul className="bt-book-list">
           {books.map((book) => (
-            <li
-              key={book.id}
-              className="border rounded p-4 flex justify-between items-center"
-            >
+            <li key={book.id} className="bt-book-card">
               <div>
-                <p className="font-semibold">{book.title}</p>
-                <p className="text-sm text-gray-600">by {book.author}</p>
-                <p className="text-sm text-gray-500">
-                  Owned by {book.owner.name}
-                </p>
+                <p className="bt-book-title">{book.title}</p>
+                <p className="bt-book-author">von {book.author}</p>
+                <p className="bt-book-owner">Gehört {book.owner.name}</p>
               </div>
-              <span
-                className={`text-xs px-2 py-1 rounded ${
-                  book.status === "AVAILABLE"
-                    ? "bg-green-100 text-green-700"
-                    : "bg-yellow-100 text-yellow-700"
-                }`}
-              >
-                {book.status}
+              <span className={`bt-badge ${book.status === "AVAILABLE" ? "bt-badge-available" : "bt-badge-borrowed"}`}>
+                {book.status === "AVAILABLE" ? "Verfügbar" : "Ausgeliehen"}
               </span>
             </li>
           ))}

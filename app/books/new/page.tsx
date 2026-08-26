@@ -13,29 +13,19 @@ export default async function NewBookPage() {
   }
 
   return (
-    <div className="max-w-sm mx-auto mt-20 p-6">
-      <h1 className="text-2xl font-bold mb-6">Add a book</h1>
-      <form action={addBook} className="flex flex-col gap-4">
-        <input
-          type="text"
-          name="title"
-          placeholder="Title"
-          className="border rounded px-3 py-2"
-          required
-        />
-        <input
-          type="text"
-          name="author"
-          placeholder="Author"
-          className="border rounded px-3 py-2"
-          required
-        />
-        <button
-          type="submit"
-          className="bg-black text-white rounded px-3 py-2"
-        >
-          Add book
-        </button>
+    <div className="bt-auth-card">
+      <h1 className="bt-auth-title">Add a book</h1>
+      <p className="bt-auth-subtitle">Share a book from your shelf with your friends.</p>
+      <form action={addBook} className="bt-form">
+        <div className="bt-form-group">
+          <label className="bt-label" htmlFor="title">Title</label>
+          <input id="title" type="text" name="title" placeholder="e.g. The Hitchhiker's Guide" className="bt-input" required />
+        </div>
+        <div className="bt-form-group">
+          <label className="bt-label" htmlFor="author">Author</label>
+          <input id="author" type="text" name="author" placeholder="e.g. Douglas Adams" className="bt-input" required />
+        </div>
+        <button type="submit" className="bt-btn bt-btn-primary" style={{width: "100%", marginTop: "0.25rem"}}>Add book</button>
       </form>
     </div>
   )
