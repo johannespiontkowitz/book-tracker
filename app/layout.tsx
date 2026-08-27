@@ -20,8 +20,8 @@ const pressStart = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "Book Tracker",
-  description: "Track and borrow books with friends",
+  title: "Stattbibliothek",
+  description: "Leihe und verleihe Bücher von und an deine Freund:innen",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -21,10 +21,24 @@ export async function addBook(formData: FormData) {
     throw new Error("Title and author are required")
   }
 
+  const isbn = (formData.get("isbn") as string) || null
+  const language = (formData.get("language") as string) || null
+  const yearRaw = formData.get("year") as string
+  const year = yearRaw ? parseInt(yearRaw, 10) : null
+  const edition = (formData.get("edition") as string) || null
+  const description = (formData.get("description") as string) || null
+  const coverImage = (formData.get("coverImage") as string) || null
+
   await prisma.book.create({
     data: {
       title,
       author,
+      isbn,
+      language,
+      year,
+      edition,
+      description,
+      coverImage,
       ownerId: session.user.id,
     },
   })

@@ -1,4 +1,8 @@
+"use client"
+
 import Link from "next/link";
+
+import { useSession } from "@/lib/auth-client"
 
 const SHELF_BOOKS = [
   { h: 88,  bg: "#e03131" },
@@ -14,6 +18,8 @@ const SHELF_BOOKS = [
 ];
 
 export default function Home() {
+  const { data: session, isPending } = useSession()
+  
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "calc(100vh - 62px)", padding: "2rem 1.5rem" }}>
       <div style={{ maxWidth: "600px", width: "100%", textAlign: "center" }}>
@@ -35,15 +41,19 @@ export default function Home() {
           Teile Bücher die du besitzt, stöbere durch die Sammlung deiner Freund:innen und stelle Ausleih-Anfragen für alles, was dich interessiert!
         </p>
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-          <Link href="/signup" className="bt-btn bt-btn-primary">▶ Mitmachen!</Link>
-          <Link href="/books/all" className="bt-btn bt-btn-secondary">Durch Bücher schmökern</Link>
+            {isPending ? null : !session ? (
+          <>
+            <Link href="/signup" className="bt-btn bt-btn-primary">▶ Mitmachen!</Link>
+          </>
+        ):<></>}
+          <Link href="/books/all" className="bt-btn bt-btn-secondary">Durch die Regale stöbern</Link>
         </div>
 
         <div className="bt-hero-features">
           {[
-            { icon: "🏡", label: "Teile dein Bücherregal" },
-            { icon: "🔍", label: "Finde was zu lesen" },
-            { icon: "🤝", label: "Leihe es von deinen Freund:innen" },
+            { icon: "📖", label: "Teile dein Bücherregal" },
+            { icon: "🔍", label: "Stöbere durch die Regale deiner Freund:innen" },
+            { icon: "🤝", label: "Leihe es dir aus!" },
           ].map(({ icon, label }) => (
             <div key={label} className="bt-hero-feature-card">
               <span style={{ fontSize: "2.25rem", lineHeight: 1, flexShrink: 0 }}>{icon}</span>

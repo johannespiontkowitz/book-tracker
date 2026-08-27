@@ -13,23 +13,68 @@ export default async function NewBookPage() {
   }
 
   return (
-    <div className="bt-auth-card">
+    <div className="max-w-sm mx-auto mt-20 p-6">
+      {/* <h1 className="text-2xl font-bold mb-6">Add a book</h1> */}
       <h1 className="bt-auth-title">Füge ein Buch hinzu</h1>
       <p className="bt-auth-subtitle">Teile ein Buch aus deinem Bücherregal mit deinen Freund:innen.</p>
-      <form action={addBook} className="bt-form">
-        <div className="bt-form-group">
-          <label className="bt-label" htmlFor="title">Buchtitel*</label>
-          <input id="title" type="text" name="title" placeholder="z.B. Per Anhalter durch die Galaxis" className="bt-input" required />
-        </div>
-        <div className="bt-form-group">
-          <label className="bt-label" htmlFor="author">Autor*</label>
-          <input id="author" type="text" name="author" placeholder="z.B. Douglas Adams" className="bt-input" required />
-        </div>
-        <div className="bt-form-group">
-          <label className="bt-label" htmlFor="isbn">ISBN</label>
-          <input id="isbn" type="text" name="isbn" placeholder="z.B. 3-453-50016-4" className="bt-input" />
-        </div>
-        <button type="submit" className="bt-btn bt-btn-primary" style={{width: "100%", marginTop: "0.25rem"}}>Hinzufügen</button>
+      <form action={addBook} className="flex flex-col gap-4">
+        <input
+          type="text"
+          name="title"
+          placeholder="Titel"
+          className="bt-input"
+          required
+        />
+        <input
+          type="text"
+          name="author"
+          placeholder="Autor"
+          className="bt-input"
+          required
+        />
+        <input
+          type="text"
+          name="isbn"
+          placeholder="ISBN"
+          className="bt-input"
+        />
+        <input
+          type="text"
+          name="language"
+          placeholder="Sprache"
+          className="bt-input"
+        />
+        <input
+          type="number"
+          name="year"
+          placeholder="Veröffentlichungsjahr"
+          className="bt-input"
+        />
+        <input
+          type="text"
+          name="edition"
+          placeholder="Ausgabe"
+          className="bt-input"
+        />
+        <textarea
+          name="description"
+          placeholder="Klappentext / Kurzzusammenfassung"
+          
+          className="bt-input"
+          rows={4}
+        />
+        <input
+          type="url"
+          name="coverImage"
+          placeholder="Bild vom Buchdeckel"
+          className="bt-input"
+        />
+        <button
+          type="submit"
+          className="bt-btn bt-btn-primary" style={{width: "100%", marginTop: "0.25rem"}}
+        >
+          Hinzufügen
+        </button>
       </form>
     </div>
   )

@@ -55,7 +55,7 @@
 
     --bt-paper:        #0f2035;
     --bt-cream:        #0a1628;
-    --bt-border:       #7dd3fc;
+    --bt-border:       #f342fc;
     --bt-border-hover: #38bdf8;
 
     --bt-honey:        #60a5fa;
@@ -123,7 +123,7 @@ body {
 
   .bt-nav-brand {
     font-family: var(--font-pixel, monospace);
-    font-size: 0.62rem;
+    font-size: 0.9rem;
     color: var(--bt-honey);
     letter-spacing: 0.05em;
     text-decoration: none;
@@ -131,7 +131,7 @@ body {
     align-items: center;
     gap: 0.5rem;
     line-height: 1.8;
-    text-shadow: 2px 2px 0 var(--bt-border);
+    text-shadow: 1px 1px 0 var(--bt-border);
   }
 
   .bt-nav-brand::before {
@@ -174,7 +174,7 @@ body {
     color: var(--bt-text-strong);
     letter-spacing: 0.03em;
     line-height: 2;
-    text-shadow: 2px 2px 0 var(--bt-border);
+    text-shadow: 1px 1px 0 var(--bt-border);
   }
 
   .bt-subheading {
@@ -410,7 +410,7 @@ body {
     margin-bottom: 0.5rem;
     letter-spacing: 0.03em;
     line-height: 2;
-    text-shadow: 2px 2px 0 var(--bt-border);
+    text-shadow: 1px 1px 0 var(--bt-border);
   }
 
   .bt-auth-subtitle {

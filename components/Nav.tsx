@@ -12,7 +12,8 @@ export default function Nav() {
       <div className="bt-nav-actions">
         {isPending ? null : session ? (
           <>
-            <Link href="/books/all" className="bt-nav-link">Bücher</Link>
+            <Link href="/my-books" className="bt-nav-link">Meine Bücher</Link>
+            <Link href="/books/all" className="bt-nav-link">Stöbern</Link>
             <span className="bt-nav-user">{session.user.name}</span>
             <button onClick={() => signOut()} className="bt-btn bt-btn-ghost">Abmelden</button>
           </>
